@@ -1,0 +1,117 @@
+:root {
+  --base-color-00: #657B83;
+  --base-color-01: #586E75;
+  --base-color-02: #073642;
+  --base-color-03: #002B36;
+  --base-color-04: #00141A;
+  --base-color-0: #9EACAD;
+  --base-color-1: #ADB8B8;
+  --base-color-2: #EEE8D5;
+  --base-color-3: #FDF6E3;
+  --base-color-4: #FFFFFF;
+
+  /* green */
+  --green-color-900: #2C3300;
+  --green-color-700: #596600;
+  --green-color-500: #596600;
+  --green-color-300: #BAFB00;
+  --green-color-100: #D6FFAC;
+
+  /* cyan */
+  --cyan-color-900: #103B3D;
+  --cyan-color-700: #1A6265;
+  --cyan-color-500: #2AA198;
+  --cyan-color-300: #29EEDF;
+  --cyan-color-100: #B9FFFA;
+
+  /* blue */
+  --blue-color-900: #103956;
+  --blue-color-700: #1B6497;
+  --blue-color-500: #268BD2;
+  --blue-color-300: #49AEF5;
+  --blue-color-100: #AADCFF;
+
+  /* violet */
+  --violet-color-900: #25285B;
+  --violet-color-700: #494FB6;
+  --violet-color-500: #6C71C4;
+  --violet-color-300: #9CA0ED;
+  --violet-color-100: #CCCFFF;
+
+  /* magenta */
+  --magenta-color-900: #541232;
+  --magenta-color-700: #B02669;
+  --magenta-color-500: #D33682;
+  --magenta-color-300: #F255A1;
+  --magenta-color-100: #FF77B9;
+
+  /* red */
+  --red-color-900: #57100F;
+  --red-color-700: #B7211F;
+  --red-color-500: #DC322F;
+  --red-color-300: #F6524F;
+  --red-color-100: #F6524F;
+
+  /* orange */
+  --orange-color-900: #5C220A;
+  --orange-color-700: #A13C11;
+  --orange-color-500: #CB4B16;
+  --orange-color-300: #F8520E;
+  --orange-color-100: #FF9468;
+
+  /* yellow */
+  --yellow-color-900: #332700;
+  --yellow-color-700: #664D00;
+  --yellow-color-500: #B58900;
+  --yellow-color-300: #FFC100;
+  --yellow-color-100: #FFE999;
+}
+
+
+
+body {
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  height: 100dvh;
+  background-image: url("./images/background.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-clip: border-box;
+}
+
+:is(p, h1, h2, h3, h4, h5) {
+  color: var(--base-color-03);
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+}
+
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 15px;
+  padding: 5px;
+  background-color: var(--base-color-04);
+  color: var(--base-color-4)
+}
+
+.date__widget {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  font-size: 12px;
+  color: var(--base-color-4);
+}
+
+.system__tray {
+  display: flex;
+  gap: 5px;
+}
