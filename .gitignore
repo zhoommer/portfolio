@@ -1,0 +1,54 @@
+# Node modules
+node_modules/
+
+# Build output
+dist/
+dist-ssr/
+*.local
+
+# Vite cache
+.vite/
+
+# Local env files
+.env
+.env.*.local
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Editor directories and files
+.idea/
+.vscode/
+*.sublime*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Optional: lock files (uncomment one if you prefer only one type of lock file)
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+
+# Optional: test coverage
+coverage/
+
+# Optional: Storybook files
+.storybook-out/
+
+# Optional: TypeScript cache
+*.tsbuildinfo
+
+# Optional: local netlify folder
+.netlify/
+
+# Optional: local firebase folder
+.firebase/
+
+# Optional: VS Code settings folder
+.history/
+
