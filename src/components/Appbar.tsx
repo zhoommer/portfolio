@@ -7,6 +7,10 @@ import intellij from "../assets/icons/intellij/20949d97e09296eb873c2e5c8c248a22_
 import postman from "../assets//icons/postman/d1253ad4d4c33f32057ba36c1f9fe79c_Postman_32x32x32.png";
 import postgresql from "../assets/icons/psql/ed285b498fd773528774f2829272be3f_0qDaLGbmop_32x32x32.png";
 import docker from "../assets/icons/docker/e85652aa51632fec98ee14b339d836fd_Docker_32x32x32.png";
+import twitter from "../assets/icons/twitter/027ca902824024586d6a2c9106a21643_X__Twitter__32x32x32.png";
+import spotify from "../assets/icons/spotify/5ed9551e4845d8d3a4e422cb9558c8ea_Spotify__iOS_18_Dark__32x32x32.png";
+import photos from "../assets/icons/photos/2bb4bbe5229f7ade8c8241edfd44f9ea_Photos_32x32x32.png";
+import calendar from "../assets/icons/calendar/2d2444e8aa4728fb184fb399f7fc3733_Calendar_32x32x32.png";
 import AppButton from "./button/AppButton";
 import { useModalContext } from "../context/ModalProvider";
 
@@ -25,6 +29,10 @@ export default function AppBar() {
       <AppButton src={postman} tooltip="Postman" />
       <AppButton src={postgresql} tooltip="pgAdmin 4" />
       <AppButton src={docker} tooltip="Docker Desktop" />
+      <AppButton src={twitter} tooltip="X" />
+      <AppButton src={spotify} tooltip="Spotify" />
+      <AppButton src={photos} tooltip="Photos" />
+      <AppButton src={calendar} tooltip="Calendar" />
     </div>
   )
 }
