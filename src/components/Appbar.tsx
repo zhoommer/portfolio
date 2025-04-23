@@ -20,9 +20,16 @@ export default function AppBar() {
   const { openModal } = useModalContext();
   const { window, handleSetActiveWindow } = useActiveWindowContext();
 
+  const setBounceAnimation = () => {
+    document.getElementById("finder")?.classList.add("animate-bounce");
+    setTimeout(() => {
+      document.getElementById("finder")?.classList.remove("animate-bounce");
+    }, 3000);
+  }
+
   return (
     <div className="w-max flex gap-3 bg-neutral-800 rounded-lg p-1">
-      <div className="flex flex-col items-center">
+      <div className="flex flex-col items-center" id="finder" onClick={setBounceAnimation}>
         <AppButton src={finder} tooltip="Finder" href="/recents" onClick={() => { openModal(); handleSetActiveWindow() }} />
         {
           window &&
