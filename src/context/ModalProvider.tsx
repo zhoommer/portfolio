@@ -2,25 +2,28 @@ import { createContext, useContext, useState } from "react";
 
 
 interface IModalContext {
-  isOpen: boolean;
+  isFinderOpen: boolean;
+  isNeoVimOpen: boolean;
   openModal: () => void;
   closeModal: () => void;
-}
-
-const initialValue = {
-  isOpen: false,
+  openNeoVim: () => void;
+  closeNeoVim: () => void;
 }
 
 const ModalContext = createContext<IModalContext | undefined>(undefined);
 
 export const ModalProvider = ({ children }: { children: React.ReactNode }) => {
-  const [isOpen, setIsOpen] = useState<boolean>(initialValue.isOpen);
+  const [isFinderOpen, setIsFinderOpen] = useState<boolean>(false);
+  const [isNeoVimOpen, setIsNeoVimOpen] = useState<boolean>(false);
 
-  const openModal = () => setIsOpen(true);
-  const closeModal = () => setIsOpen(false);
+  const openModal = () => setIsFinderOpen(true);
+  const closeModal = () => setIsFinderOpen(false);
+
+  const openNeoVim = () => setIsNeoVimOpen(true);
+  const closeNeoVim = () => setIsNeoVimOpen(false);
 
   return (
-    <ModalContext.Provider value={{ isOpen, openModal, closeModal }}>
+    <ModalContext.Provider value={{ isFinderOpen, isNeoVimOpen, openModal, closeModal, openNeoVim, closeNeoVim }}>
       {children}
     </ModalContext.Provider>
   )

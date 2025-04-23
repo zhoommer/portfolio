@@ -12,10 +12,9 @@ interface AppButtonProps {
 export default function AppButton({ src, tooltip, href, onClick }: AppButtonProps) {
   const [isHover, setIsHover] = useState<boolean>(false);
 
-
   return (
     <div className="relative">
-      <Link to={href ? href : ""} className="bg-transparent transition-all hover:scale-120" onMouseEnter={() => setIsHover(true)} onMouseLeave={() => setIsHover(false)} onClick={onClick}>
+      <Link to={href ? href : ""} className="bg-transparent" onMouseEnter={() => setIsHover(true)} onMouseLeave={() => setIsHover(false)} onClick={onClick}>
         <img src={src} alt="Finder" />
       </Link>
       {isHover && (

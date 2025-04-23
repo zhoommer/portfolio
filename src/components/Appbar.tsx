@@ -17,29 +17,35 @@ import { useActiveWindowContext } from "../context/ActiveWindowProvider";
 
 export default function AppBar() {
 
-  const { openModal } = useModalContext();
-  const { window, handleSetActiveWindow } = useActiveWindowContext();
+  const { openModal, openNeoVim } = useModalContext();
+  const { windowFinder, windowNeoVim, handleSetActiveWindow, handleSetActiveWindowNeoVim } = useActiveWindowContext();
 
-  const setBounceAnimation = () => {
-    document.getElementById("finder")?.classList.add("animate-bounce");
+  const setBounceAnimation = (element: "finder" | "neovim") => {
+    document.getElementById(element)?.classList.add("animate-bounce");
     setTimeout(() => {
-      document.getElementById("finder")?.classList.remove("animate-bounce");
+      document.getElementById(element)?.classList.remove("animate-bounce");
     }, 3000);
   }
 
   return (
     <div className="w-max flex gap-3 bg-neutral-800 rounded-lg p-1">
-      <div className="flex flex-col items-center" id="finder" onClick={setBounceAnimation}>
+      <div className="flex flex-col items-center" id="finder" onClick={() => setBounceAnimation("finder")}>
         <AppButton src={finder} tooltip="Finder" href="/recents" onClick={() => { openModal(); handleSetActiveWindow() }} />
         {
-          window &&
+          windowFinder &&
           <div className="w-1 h-1 rounded-full bg-white"></div>
         }
       </div>
       <AppButton src={launchpad} tooltip="Launchpad" />
       <AppButton src={safari} tooltip="Safari" />
       <AppButton src={firefox} tooltip="Firefox" />
-      <AppButton src={neovim} tooltip="NeoVim" />
+      <div className="flex flex-col items-center" id="neovim" onClick={() => setBounceAnimation("neovim")}>
+        <AppButton src={neovim} tooltip="NeoVim" onClick={() => { openNeoVim(); handleSetActiveWindowNeoVim() }} />
+        {
+          windowNeoVim &&
+          <div className="w-1 h-1 rounded-full bg-white"></div>
+        }
+      </div>
       <AppButton src={intellij} tooltip="Intellij IDEA Community Edition" />
       <AppButton src={postman} tooltip="Postman" />
       <AppButton src={postgresql} tooltip="pgAdmin 4" />

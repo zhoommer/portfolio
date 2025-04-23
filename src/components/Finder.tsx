@@ -10,7 +10,7 @@ import Development from "../pages/Development";
 
 
 export default function Finder() {
-  const { isOpen, closeModal } = useModalContext();
+  const { isFinderOpen, closeModal } = useModalContext();
   const { handleSetInactiveWindow } = useActiveWindowContext();
   const location = useLocation();
   const { pathname } = location;
@@ -46,7 +46,7 @@ export default function Finder() {
   return (
     <>
       {
-        isOpen &&
+        isFinderOpen &&
         <div className="border rounded w-full h-full flex bg-neutral-900">
           <div className="w-[10rem] bg-neutral-800 text-white p-3 text-xs">
             <div className="flex gap-1">

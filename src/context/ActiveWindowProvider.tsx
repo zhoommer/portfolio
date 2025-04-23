@@ -2,25 +2,30 @@ import { createContext, useContext, useState } from "react";
 
 
 interface IActiveWindowContext {
-  window: boolean;
+  windowFinder: boolean;
+  windowNeoVim: boolean;
   handleSetActiveWindow: () => void;
   handleSetInactiveWindow: () => void;
+  handleSetActiveWindowNeoVim: () => void;
+  handleSetInactiveWindowNeoVim: () => void;
 }
 
 
 const ActiveWindowContext = createContext<IActiveWindowContext | undefined>(undefined);
 
 export const ActiveWindowProvider = ({ children }: { children: React.ReactNode }) => {
-  const [window, setWindow] = useState<boolean>(false);
+  const [windowFinder, setWindowFinder] = useState<boolean>(false);
+  const [windowNeoVim, setWindowNeoVim] = useState<boolean>(false);
 
-  const handleSetActiveWindow = () => setWindow(true);
+  const handleSetActiveWindow = () => setWindowFinder(true);
+  const handleSetInactiveWindow = () => setWindowFinder(false);
 
-
-  const handleSetInactiveWindow = () => setWindow(false);
+  const handleSetActiveWindowNeoVim = () => setWindowNeoVim(true);
+  const handleSetInactiveWindowNeoVim = () => setWindowNeoVim(false);
 
 
   return (
-    <ActiveWindowContext.Provider value={{ window, handleSetActiveWindow, handleSetInactiveWindow }}>
+    <ActiveWindowContext.Provider value={{ windowFinder, windowNeoVim, handleSetActiveWindow, handleSetInactiveWindow, handleSetActiveWindowNeoVim, handleSetInactiveWindowNeoVim }}>
       {children}
     </ActiveWindowContext.Provider>
   )
