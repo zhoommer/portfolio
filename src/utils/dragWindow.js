@@ -1,7 +1,6 @@
 let newX = 0, newY = 0, startX = 100, startY = 100;
 
-const card = document.getElementById("card");
-
+const resizableComponent = document.getElementById("resizableComponent");
 
 function mouseDown(e) {
   startX = e.clientX
@@ -18,8 +17,8 @@ function mouseMove(e) {
   startX = e.clientX
   startY = e.clientY
 
-  card[0].style.top = (card[0].offsetTop - newY) + 'px'
-  card[0].style.left = (card[0].offsetLeft - newX) + 'px'
+  resizableComponent[0].style.top = (resizableComponent[0].offsetTop - newY) + 'px'
+  resizableComponent[0].style.left = (resizableComponent[0].offsetLeft - newX) + 'px'
 }
 
 function mouseUp(e) {

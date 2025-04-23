@@ -6,6 +6,7 @@ import { MdKeyboardArrowLeft, MdKeyboardArrowRight, MdLabelImportant } from "rea
 import { Link, Route, Routes, useLocation } from "react-router-dom";
 import Development from "../pages/Development";
 import FolderActions from "./FolderActions";
+import Recents from "../pages/Recents";
 
 
 
@@ -124,6 +125,7 @@ export default function Finder() {
             <div>
               <Routes>
                 <Route path="/development" element={<Development />} />
+                <Route path="/recents" element={<Recents />} />
               </Routes>
             </div>
           </div>
