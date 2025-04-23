@@ -1,17 +1,16 @@
-import { IoIosCloseCircle, IoIosRemoveCircle, IoIosArrowDropdownCircle, IoIosDesktop, IoIosCode, IoIosDocument, IoIosDownload, IoIosSearch, IoIosShare } from "react-icons/io";
+import { IoIosDesktop, IoIosCode, IoIosDocument, IoIosDownload, IoIosSearch, IoIosShare } from "react-icons/io";
 import { useModalContext } from "../context/ModalProvider"
 import { RiSignalTowerFill, RiHistoryFill, RiAppStoreLine } from "react-icons/ri";
 import { IoCloud, IoShare } from "react-icons/io5";
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight, MdLabelImportant } from "react-icons/md";
-import { useActiveWindowContext } from "../context/ActiveWindowProvider";
 import { Link, Route, Routes, useLocation } from "react-router-dom";
 import Development from "../pages/Development";
+import FolderActions from "./FolderActions";
 
 
 
 export default function Finder() {
-  const { isFinderOpen, closeModal } = useModalContext();
-  const { handleSetInactiveWindow } = useActiveWindowContext();
+  const { isFinderOpen } = useModalContext();
   const location = useLocation();
   const { pathname } = location;
 
@@ -49,19 +48,7 @@ export default function Finder() {
         isFinderOpen &&
         <div className="border rounded w-full h-full flex bg-neutral-900">
           <div className="w-[10rem] bg-neutral-800 text-white p-3 text-xs">
-            <div className="flex gap-1">
-              <Link to="/" onClick={() => { closeModal(); handleSetInactiveWindow() }}>
-                <IoIosCloseCircle color="red" size={15} />
-              </Link>
-              <button>
-                <IoIosRemoveCircle color="orange" size={15} />
-              </button>
-
-              <button>
-                <IoIosArrowDropdownCircle color="green" size={15} />
-              </button>
-            </div>
-
+            <FolderActions />
             <div className="mt-4">
               <p className="text-zinc-600 font-semibold">Favorites</p>
 

@@ -1,9 +1,7 @@
 let newX = 0, newY = 0, startX = 100, startY = 100;
 
+const card = document.getElementById("card");
 
-const card = document.getElementsByClassName("Draggable");
-
-// card[0].addEventListener('mousedown', mouseDown)
 
 function mouseDown(e) {
   startX = e.clientX
