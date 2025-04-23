@@ -3,16 +3,19 @@ import { useModalContext } from "../context/ModalProvider";
 
 const ResizableBox = ({ children }: { children: React.ReactNode }) => {
   const { isOpen } = useModalContext();
+
   return (
     <>
       {isOpen && <Resizable
-        defaultSize={{ width: 400, height: 400 }
+        defaultSize={{ width: 800, height: 400 }
         }
-        minWidth={400}
+        minWidth={500}
         minHeight={400}
         maxWidth={800}
         maxHeight={800}
-        style={{ position: "relative", top: "100px", left: "100px" }}
+        style={{ position: "absolute", top: "100px", left: "100px" }}
+        className="Draggable"
+
       >
         {children}
       </Resizable >

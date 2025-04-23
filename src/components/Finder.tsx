@@ -1,12 +1,21 @@
-import { IoIosCloseCircle, IoIosRemoveCircle, IoIosArrowDropdownCircle, IoIosDesktop, IoIosCode, IoIosDocument, IoIosDownload } from "react-icons/io";
+import { useState } from "react";
+import { IoIosCloseCircle, IoIosRemoveCircle, IoIosArrowDropdownCircle, IoIosDesktop, IoIosCode, IoIosDocument, IoIosDownload, IoIosSearch, IoIosShare } from "react-icons/io";
 import { useModalContext } from "../context/ModalProvider"
 import { RiSignalTowerFill, RiHistoryFill, RiAppStoreLine } from "react-icons/ri";
 import { IoCloud, IoShare } from "react-icons/io5";
+import { MdKeyboardArrowLeft, MdKeyboardArrowRight, MdLabelImportant } from "react-icons/md";
+import { useActiveWindowContext } from "../context/ActiveWindowProvider";
 
 
 
 export default function Finder() {
-  const { isOpen } = useModalContext();
+  const { isOpen, closeModal } = useModalContext();
+  const { handleSetInactiveWindow } = useActiveWindowContext();
+  const [selectedTab, setSelectedTab] = useState<"AirDrop" | "Recents" | "Applications" | "Desktop" | "Development" | "Documents" | "Downloads">("Recents")
+
+  function handleChangeSelectedTab(selected: "AirDrop" | "Recents" | "Applications" | "Desktop" | "Development" | "Documents" | "Downloads") {
+    setSelectedTab(selected);
+  };
 
   return (
     <>
@@ -15,7 +24,7 @@ export default function Finder() {
         <div className="border rounded w-full h-full flex bg-neutral-900">
           <div className="w-[10rem] bg-neutral-800 text-white p-3 text-xs">
             <div className="flex gap-1">
-              <button>
+              <button onClick={() => { closeModal(); handleSetInactiveWindow() }}>
                 <IoIosCloseCircle color="red" size={15} />
               </button>
               <button>
@@ -31,31 +40,31 @@ export default function Finder() {
               <p className="text-zinc-600 font-semibold">Favorites</p>
 
               <div className="flex flex-col gap-1 mt-2">
-                <button className="flex gap-2 items-center p-1 rounded-md ">
+                <button className={`${selectedTab === 'AirDrop' ? 'bg-neutral-900' : ''} flex gap-2 items-center p-1 rounded-md transition-all`} onClick={() => handleChangeSelectedTab("AirDrop")}>
                   <RiSignalTowerFill className="text-blue-400" size={16} />
                   AirDrop
                 </button>
-                <button className="flex gap-2 items-center p-1 rounded-md">
+                <button className={`${selectedTab === 'Recents' ? 'bg-neutral-900' : ''} flex gap-2 items-center p-1 rounded-md transition-all`} onClick={() => handleChangeSelectedTab("Recents")}>
                   <RiHistoryFill className="text-blue-400" size={16} />
                   Recents
                 </button>
-                <button className="flex gap-2 items-center p-1 rounded-md">
+                <button className={`${selectedTab === 'Applications' ? 'bg-neutral-900' : ''} flex gap-2 items-center p-1 rounded-md transition-all`} onClick={() => handleChangeSelectedTab("Applications")}>
                   <RiAppStoreLine className="text-blue-400" size={16} />
                   Applications
                 </button>
-                <button className="flex gap-2 items-center p-1 rounded-md">
+                <button className={`${selectedTab === 'Desktop' ? 'bg-neutral-900' : ''} flex gap-2 items-center p-1 rounded-md transition-all`} onClick={() => handleChangeSelectedTab("Desktop")}>
                   <IoIosDesktop className="text-blue-400" size={16} />
                   Desktop
                 </button>
-                <button className="flex gap-2 items-center bg-neutral-900 p-1 rounded-md">
+                <button className={`${selectedTab === 'Development' ? 'bg-neutral-900' : ''} flex gap-2 items-center p-1 rounded-md transition-all`} onClick={() => handleChangeSelectedTab("Development")}>
                   <IoIosCode className="text-blue-400" size={16} />
                   Development
                 </button>
-                <button className="flex gap-2 items-center p-1 rounded-md">
+                <button className={`${selectedTab === 'Documents' ? 'bg-neutral-900' : ''} flex gap-2 items-center p-1 rounded-md transition-all`} onClick={() => handleChangeSelectedTab("Documents")}>
                   <IoIosDocument className="text-blue-400" size={16} />
                   Documents
                 </button>
-                <button className="flex gap-2 items-center p-1 rounded-md">
+                <button className={`${selectedTab === 'Downloads' ? 'bg-neutral-900' : ''} flex gap-2 items-center p-1 rounded-md transition-all`} onClick={() => handleChangeSelectedTab("Downloads")}>
                   <IoIosDownload className="text-blue-400" size={16} />
                   Downloads
                 </button>
@@ -77,10 +86,31 @@ export default function Finder() {
             </div>
           </div>
           <div className="grow">
-            <div>header</div>
+            <div className="flex justify-between items-center p-4">
+              <div>
+                <div className="flex items-center gap-2 text-normal">
+                  <div className="p-1 hover:bg-zinc-800 transition-all rounded">
+                    <MdKeyboardArrowLeft className="text-zinc-400" size={25} />
+                  </div>
+                  <MdKeyboardArrowRight className="text-zinc-400" size={25} />
+                  <h3 className="text-zinc-200">Development</h3>
+                </div>
+              </div>
+              <div className="flex items-center gap-3 text-zinc-400">
+                <div className="px-2 py-1 hover:bg-zinc-800 rounded transition-all">
+                  <IoIosShare size={20} />
+                </div>
+                <div className="px-2 py-1 hover:bg-zinc-800 rounded transition-all">
+                  <MdLabelImportant size={20} className="-rotate-45" />
+                </div>
+                <div className="px-2 py-1 hover:bg-zinc-800 rounded transition-all">
+                  <IoIosSearch size={20} />
+                </div>
+              </div>
+            </div>
             <div>main</div>
           </div>
-        </div>
+        </div >
       }
     </>
   )

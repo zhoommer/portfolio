@@ -13,14 +13,22 @@ import photos from "../assets/icons/photos/2bb4bbe5229f7ade8c8241edfd44f9ea_Phot
 import calendar from "../assets/icons/calendar/2d2444e8aa4728fb184fb399f7fc3733_Calendar_32x32x32.png";
 import AppButton from "./button/AppButton";
 import { useModalContext } from "../context/ModalProvider";
+import { useActiveWindowContext } from "../context/ActiveWindowProvider";
 
 export default function AppBar() {
 
   const { openModal } = useModalContext();
+  const { window, handleSetActiveWindow } = useActiveWindowContext();
 
   return (
     <div className="w-max flex gap-3 bg-neutral-800 rounded-lg p-1">
-      <AppButton src={finder} tooltip="Finder" onClick={openModal} />
+      <div className="flex flex-col items-center">
+        <AppButton src={finder} tooltip="Finder" onClick={() => { openModal(); handleSetActiveWindow() }} />
+        {
+          window &&
+          <div className="w-1 h-1 rounded-full bg-white"></div>
+        }
+      </div>
       <AppButton src={launchpad} tooltip="Launchpad" />
       <AppButton src={safari} tooltip="Safari" />
       <AppButton src={firefox} tooltip="Firefox" />
