@@ -23,7 +23,7 @@ export default function AppBar() {
   return (
     <div className="w-max flex gap-3 bg-neutral-800 rounded-lg p-1">
       <div className="flex flex-col items-center">
-        <AppButton src={finder} tooltip="Finder" onClick={() => { openModal(); handleSetActiveWindow() }} />
+        <AppButton src={finder} tooltip="Finder" href="/recents" onClick={() => { openModal(); handleSetActiveWindow() }} />
         {
           window &&
           <div className="w-1 h-1 rounded-full bg-white"></div>

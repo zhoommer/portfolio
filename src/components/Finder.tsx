@@ -1,21 +1,47 @@
-import { useState } from "react";
 import { IoIosCloseCircle, IoIosRemoveCircle, IoIosArrowDropdownCircle, IoIosDesktop, IoIosCode, IoIosDocument, IoIosDownload, IoIosSearch, IoIosShare } from "react-icons/io";
 import { useModalContext } from "../context/ModalProvider"
 import { RiSignalTowerFill, RiHistoryFill, RiAppStoreLine } from "react-icons/ri";
 import { IoCloud, IoShare } from "react-icons/io5";
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight, MdLabelImportant } from "react-icons/md";
 import { useActiveWindowContext } from "../context/ActiveWindowProvider";
+import { Link, Route, Routes, useLocation } from "react-router-dom";
+import Development from "../pages/Development";
 
 
 
 export default function Finder() {
   const { isOpen, closeModal } = useModalContext();
   const { handleSetInactiveWindow } = useActiveWindowContext();
-  const [selectedTab, setSelectedTab] = useState<"AirDrop" | "Recents" | "Applications" | "Desktop" | "Development" | "Documents" | "Downloads">("Recents")
+  const location = useLocation();
+  const { pathname } = location;
 
-  function handleChangeSelectedTab(selected: "AirDrop" | "Recents" | "Applications" | "Desktop" | "Development" | "Documents" | "Downloads") {
-    setSelectedTab(selected);
-  };
+
+  const activeWindow = (window: string): boolean => {
+    if (window === pathname) return true;
+    return false;
+  }
+
+  const windowTitle = () => {
+    switch (pathname) {
+      case "/airdrop":
+        return "AirDrop";
+      case "/recents":
+        return "Recents";
+      case "/applications":
+        return "Applications";
+      case "/desktop":
+        return "Desktop";
+      case "/development":
+        return "Development";
+      case "/documents":
+        return "Documents";
+      case "/downloads":
+        return "Downloads";
+
+      default:
+        return "Recents";
+    }
+  }
 
   return (
     <>
@@ -24,9 +50,9 @@ export default function Finder() {
         <div className="border rounded w-full h-full flex bg-neutral-900">
           <div className="w-[10rem] bg-neutral-800 text-white p-3 text-xs">
             <div className="flex gap-1">
-              <button onClick={() => { closeModal(); handleSetInactiveWindow() }}>
+              <Link to="/" onClick={() => { closeModal(); handleSetInactiveWindow() }}>
                 <IoIosCloseCircle color="red" size={15} />
-              </button>
+              </Link>
               <button>
                 <IoIosRemoveCircle color="orange" size={15} />
               </button>
@@ -40,34 +66,34 @@ export default function Finder() {
               <p className="text-zinc-600 font-semibold">Favorites</p>
 
               <div className="flex flex-col gap-1 mt-2">
-                <button className={`${selectedTab === 'AirDrop' ? 'bg-neutral-900' : ''} flex gap-2 items-center p-1 rounded-md transition-all`} onClick={() => handleChangeSelectedTab("AirDrop")}>
+                <Link to={"/airdrop"} className={`${activeWindow('/airdrop') ? 'bg-neutral-900' : ''} flex gap-2 items-center p-1 rounded-md transition-all`}>
                   <RiSignalTowerFill className="text-blue-400" size={16} />
                   AirDrop
-                </button>
-                <button className={`${selectedTab === 'Recents' ? 'bg-neutral-900' : ''} flex gap-2 items-center p-1 rounded-md transition-all`} onClick={() => handleChangeSelectedTab("Recents")}>
+                </Link>
+                <Link to={"/recents"} className={`${activeWindow('/recents') ? 'bg-neutral-900' : ''} flex gap-2 items-center p-1 rounded-md transition-all`}>
                   <RiHistoryFill className="text-blue-400" size={16} />
                   Recents
-                </button>
-                <button className={`${selectedTab === 'Applications' ? 'bg-neutral-900' : ''} flex gap-2 items-center p-1 rounded-md transition-all`} onClick={() => handleChangeSelectedTab("Applications")}>
+                </Link>
+                <Link to={"/applications"} className={`${activeWindow('/applications') ? 'bg-neutral-900' : ''} flex gap-2 items-center p-1 rounded-md transition-all`} >
                   <RiAppStoreLine className="text-blue-400" size={16} />
                   Applications
-                </button>
-                <button className={`${selectedTab === 'Desktop' ? 'bg-neutral-900' : ''} flex gap-2 items-center p-1 rounded-md transition-all`} onClick={() => handleChangeSelectedTab("Desktop")}>
+                </Link>
+                <Link to={"/desktop"} className={`${activeWindow('/desktop') ? 'bg-neutral-900' : ''} flex gap-2 items-center p-1 rounded-md transition-all`} >
                   <IoIosDesktop className="text-blue-400" size={16} />
                   Desktop
-                </button>
-                <button className={`${selectedTab === 'Development' ? 'bg-neutral-900' : ''} flex gap-2 items-center p-1 rounded-md transition-all`} onClick={() => handleChangeSelectedTab("Development")}>
+                </Link>
+                <Link to={"/development"} className={`${activeWindow('/development') ? 'bg-neutral-900' : ''} flex gap-2 items-center p-1 rounded-md transition-all`} >
                   <IoIosCode className="text-blue-400" size={16} />
                   Development
-                </button>
-                <button className={`${selectedTab === 'Documents' ? 'bg-neutral-900' : ''} flex gap-2 items-center p-1 rounded-md transition-all`} onClick={() => handleChangeSelectedTab("Documents")}>
+                </Link>
+                <Link to={"/documents"} className={`${activeWindow('/documents') ? 'bg-neutral-900' : ''} flex gap-2 items-center p-1 rounded-md transition-all`} >
                   <IoIosDocument className="text-blue-400" size={16} />
                   Documents
-                </button>
-                <button className={`${selectedTab === 'Downloads' ? 'bg-neutral-900' : ''} flex gap-2 items-center p-1 rounded-md transition-all`} onClick={() => handleChangeSelectedTab("Downloads")}>
+                </Link>
+                <Link to={"/downloads"} className={`${activeWindow('/downloads') ? 'bg-neutral-900' : ''} flex gap-2 items-center p-1 rounded-md transition-all`} >
                   <IoIosDownload className="text-blue-400" size={16} />
                   Downloads
-                </button>
+                </Link>
               </div>
             </div>
 
@@ -93,7 +119,7 @@ export default function Finder() {
                     <MdKeyboardArrowLeft className="text-zinc-400" size={25} />
                   </div>
                   <MdKeyboardArrowRight className="text-zinc-400" size={25} />
-                  <h3 className="text-zinc-200">Development</h3>
+                  <h3 className="text-zinc-200">{windowTitle()}</h3>
                 </div>
               </div>
               <div className="flex items-center gap-3 text-zinc-400">
@@ -108,7 +134,11 @@ export default function Finder() {
                 </div>
               </div>
             </div>
-            <div>main</div>
+            <div>
+              <Routes>
+                <Route path="/development" element={<Development />} />
+              </Routes>
+            </div>
           </div>
         </div >
       }

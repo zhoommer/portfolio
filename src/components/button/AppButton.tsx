@@ -1,21 +1,23 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 interface AppButtonProps {
   src: string;
   tooltip: string;
+  href?: "/airdrop" | "/recents" | "/applications" | "/desktop" | "/development" | "/documents" | "/downloads";
   onClick?: () => void;
 }
 
 
-export default function AppButton({ src, tooltip, onClick }: AppButtonProps) {
+export default function AppButton({ src, tooltip, href, onClick }: AppButtonProps) {
   const [isHover, setIsHover] = useState<boolean>(false);
 
 
   return (
     <div className="relative">
-      <button className="bg-transparent transition-all hover:scale-120" onMouseEnter={() => setIsHover(true)} onMouseLeave={() => setIsHover(false)} onClick={onClick}>
+      <Link to={href ? href : ""} className="bg-transparent transition-all hover:scale-120" onMouseEnter={() => setIsHover(true)} onMouseLeave={() => setIsHover(false)} onClick={onClick}>
         <img src={src} alt="Finder" />
-      </button>
+      </Link>
       {isHover && (
         <div className="absolute bottom-full mb-2 px-2 py-1 w-max text-sm text-white bg-zinc-800 rounded shadow-lg transition-opacity duration-500 ease-in-out">
           {tooltip}
