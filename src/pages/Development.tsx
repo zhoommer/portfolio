@@ -10,16 +10,16 @@ export default function Development() {
     setSelectedFile(file)
   }
   return (
-    <div className="text-white px-5 flex gap-3">
-      <div className="w-[80px] rounded px-2" onClick={() => handleSetSelectedFile("about")}>
+    <div className="text-white px-5 flex">
+      <div className="w-[80px] flex flex-col items-center" onClick={() => handleSetSelectedFile("about")}>
         <PiFileTextFill size={50} className={`${selectedFile === "about" ? "bg-zinc-700" : ""} p-1 rounded transition-all`} />
         <p className="text-wrap break-all" style={{ fontSize: "9px" }}>AboutMe.txt</p>
       </div>
-      <div className="w-[80px]" onClick={() => handleSetSelectedFile("experience")}>
+      <div className="w-[80px] flex flex-col items-center" onClick={() => handleSetSelectedFile("experience")}>
         <FaLaptopCode size={50} className={`${selectedFile === "experience" ? "bg-zinc-700" : ""} p-1 rounded transition-all`} />
         <p className="text-pretty break-all" style={{ fontSize: "9px" }}>Experience.txt</p>
       </div>
-      <div className="w-[80px]" onClick={() => handleSetSelectedFile("socials")}>
+      <div className="w-[80px] flex flex-col items-center" onClick={() => handleSetSelectedFile("socials")}>
         <IoShareSocialSharp size={50} className={`${selectedFile === "socials" ? "bg-zinc-700" : ""} p-1 rounded transition-all`} />
         <p className="text-pretty break-all" style={{ fontSize: "9px" }}>Socials.txt</p>
       </div>

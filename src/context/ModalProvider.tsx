@@ -2,28 +2,31 @@ import { createContext, useContext, useState } from "react";
 
 
 interface IModalContext {
-  isFinderOpen: boolean;
-  isNeoVimOpen: boolean;
-  openModal: () => void;
-  closeModal: () => void;
-  openNeoVim: () => void;
-  closeNeoVim: () => void;
+  isOpen: { finder: boolean, neovim: boolean };
+  openModal: (key: "finder" | "neovim") => void;
+  closeModal: (key: "finder" | "neovim") => void;
 }
 
 const ModalContext = createContext<IModalContext | undefined>(undefined);
 
 export const ModalProvider = ({ children }: { children: React.ReactNode }) => {
-  const [isFinderOpen, setIsFinderOpen] = useState<boolean>(false);
-  const [isNeoVimOpen, setIsNeoVimOpen] = useState<boolean>(false);
+  const [isOpen, setIsOpen] = useState<{ finder: boolean, neovim: boolean }>({
+    finder: false,
+    neovim: false,
+  });
 
-  const openModal = () => setIsFinderOpen(true);
-  const closeModal = () => setIsFinderOpen(false);
+  const openModal = (key: "finder" | "neovim") => {
+    if (key === "finder") setIsOpen({ ...isOpen, finder: true });
+    else if (key === "neovim") setIsOpen({ ...isOpen, neovim: true });
+  };
 
-  const openNeoVim = () => setIsNeoVimOpen(true);
-  const closeNeoVim = () => setIsNeoVimOpen(false);
+  const closeModal = (key: "finder" | "neovim") => {
+    if (key === "finder") setIsOpen({ ...isOpen, finder: false });
+    else if (key === "neovim") setIsOpen({ ...isOpen, neovim: false });
+  };
 
   return (
-    <ModalContext.Provider value={{ isFinderOpen, isNeoVimOpen, openModal, closeModal, openNeoVim, closeNeoVim }}>
+    <ModalContext.Provider value={{ isOpen, openModal, closeModal }}>
       {children}
     </ModalContext.Provider>
   )

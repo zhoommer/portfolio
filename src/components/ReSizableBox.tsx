@@ -1,13 +1,16 @@
 import { Resizable } from "re-resizable";
-import { useModalContext } from "../context/ModalProvider";
 
-const ResizableBox = ({ children }: { children: React.ReactNode }) => {
-  const startX = 100; const startY = 100;
-  const { isFinderOpen, isNeoVimOpen } = useModalContext();
+interface ResizableProps {
+  children: React.ReactNode;
+  startX: number;
+  startY: number;
+}
+
+const ResizableBox = ({ children, startX, startY }: ResizableProps) => {
 
   return (
     <>
-      {isFinderOpen && <Resizable
+      <Resizable
         defaultSize={{ width: 800, height: 400 }
         }
         minWidth={400}
@@ -20,21 +23,6 @@ const ResizableBox = ({ children }: { children: React.ReactNode }) => {
       >
         {children}
       </Resizable >
-      }
-
-      {
-        isNeoVimOpen && <Resizable
-          defaultSize={{ width: 800, height: 400 }
-          }
-          minWidth={400}
-          minHeight={400}
-          maxWidth={800}
-          maxHeight={800}
-          style={{ position: "absolute", top: `${startX}px`, left: `${startY}px` }}
-        >
-          {children}
-        </Resizable >
-      }
     </>
   )
 };

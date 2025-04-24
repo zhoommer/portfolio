@@ -17,7 +17,7 @@ import { useActiveWindowContext } from "../context/ActiveWindowProvider";
 
 export default function AppBar() {
 
-  const { openModal, openNeoVim } = useModalContext();
+  const { openModal } = useModalContext();
   const { windowFinder, windowNeoVim, handleSetActiveWindow, handleSetActiveWindowNeoVim } = useActiveWindowContext();
 
   const setBounceAnimation = (element: "finder" | "neovim") => {
@@ -30,7 +30,7 @@ export default function AppBar() {
   return (
     <div className="w-max flex gap-3 bg-neutral-800 rounded-lg p-1">
       <div className="flex flex-col items-center" id="finder" onClick={() => setBounceAnimation("finder")}>
-        <AppButton src={finder} tooltip="Finder" href="/recents" onClick={() => { openModal(); handleSetActiveWindow() }} />
+        <AppButton src={finder} tooltip="Finder" href="/recents" onClick={() => { openModal("finder"); handleSetActiveWindow() }} />
         {
           windowFinder &&
           <div className="w-1 h-1 rounded-full bg-white"></div>
@@ -40,7 +40,7 @@ export default function AppBar() {
       <AppButton src={safari} tooltip="Safari" />
       <AppButton src={firefox} tooltip="Firefox" />
       <div className="flex flex-col items-center" id="neovim" onClick={() => setBounceAnimation("neovim")}>
-        <AppButton src={neovim} tooltip="NeoVim" onClick={() => { openNeoVim(); handleSetActiveWindowNeoVim() }} />
+        <AppButton src={neovim} tooltip="NeoVim" onClick={() => { openModal("neovim"); handleSetActiveWindowNeoVim() }} />
         {
           windowNeoVim &&
           <div className="w-1 h-1 rounded-full bg-white"></div>

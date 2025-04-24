@@ -3,13 +3,17 @@ import { IoIosCloseCircle, IoIosRemoveCircle, IoIosArrowDropdownCircle } from "r
 import { useModalContext } from "../context/ModalProvider";
 import { useActiveWindowContext } from "../context/ActiveWindowProvider";
 
-export default function FolderActions() {
-  const { closeModal, closeNeoVim } = useModalContext();
+interface FolderActionsProps {
+  folder: "finder" | "neovim";
+}
+
+export default function FolderActions({ folder }: FolderActionsProps) {
+  const { closeModal } = useModalContext();
   const { handleSetInactiveWindow, handleSetInactiveWindowNeoVim } = useActiveWindowContext();
 
   return (
     <div className="flex gap-1">
-      <Link to="/" onClick={() => { closeModal(); closeNeoVim(); handleSetInactiveWindow(); handleSetInactiveWindowNeoVim(); }}>
+      <Link to="/" onClick={() => { closeModal(folder); handleSetInactiveWindow(); handleSetInactiveWindowNeoVim(); }}>
         <IoIosCloseCircle color="red" size={15} />
       </Link>
       <button>

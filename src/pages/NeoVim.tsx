@@ -1,15 +1,20 @@
 import FolderActions from "../components/FolderActions";
+import ResizableBox from "../components/ReSizableBox";
 import { useModalContext } from "../context/ModalProvider";
 
 
 export default function NeoVim() {
-  const { isNeoVimOpen } = useModalContext();
+  const { isOpen } = useModalContext();
   return (
     <>
-      {isNeoVimOpen && <div className="border">
-        <FolderActions />
-        NeoVim
-      </div>}
+      {isOpen.neovim &&
+        <ResizableBox startX={200} startY={200}>
+          <div className="border">
+            <FolderActions folder="neovim" />
+            NeoVim
+          </div>
+        </ResizableBox>
+      }
     </>
   );
 };
