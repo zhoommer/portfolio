@@ -38,7 +38,6 @@ export default function Finder() {
         return "Documents";
       case "/downloads":
         return "Downloads";
-
       default:
         return "Recents";
     }

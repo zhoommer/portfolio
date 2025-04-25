@@ -9,7 +9,7 @@ export default function NeoVim() {
     <>
       {isOpen.neovim &&
         <ResizableBox startX={200} startY={200}>
-          <div className="border">
+          <div className="border rounded bg-[#073642] p-3">
             <FolderActions folder="neovim" />
             NeoVim
           </div>

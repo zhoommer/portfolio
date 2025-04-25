@@ -2,30 +2,33 @@ import { createContext, useContext, useState } from "react";
 
 
 interface IActiveWindowContext {
-  windowFinder: boolean;
-  windowNeoVim: boolean;
-  handleSetActiveWindow: () => void;
-  handleSetInactiveWindow: () => void;
-  handleSetActiveWindowNeoVim: () => void;
-  handleSetInactiveWindowNeoVim: () => void;
+  activeWindow: { finder: boolean; neovim: boolean; };
+  handleSetActiveWindow: (window: "finder" | "neovim") => void;
+  handleSetInActiveWindow: (window: "finder" | "neovim") => void;
 }
 
 
 const ActiveWindowContext = createContext<IActiveWindowContext | undefined>(undefined);
 
 export const ActiveWindowProvider = ({ children }: { children: React.ReactNode }) => {
-  const [windowFinder, setWindowFinder] = useState<boolean>(false);
-  const [windowNeoVim, setWindowNeoVim] = useState<boolean>(false);
+  const [activeWindow, setActiveWindow] = useState<{ finder: boolean; neovim: boolean }>({
+    finder: false,
+    neovim: false,
+  });
 
-  const handleSetActiveWindow = () => setWindowFinder(true);
-  const handleSetInactiveWindow = () => setWindowFinder(false);
+  const handleSetActiveWindow = (window: "finder" | "neovim") => {
+    if (window === "finder") setActiveWindow({ ...activeWindow, finder: true });
+    else if (window === "neovim") setActiveWindow({ ...activeWindow, neovim: true });
+  }
 
-  const handleSetActiveWindowNeoVim = () => setWindowNeoVim(true);
-  const handleSetInactiveWindowNeoVim = () => setWindowNeoVim(false);
+  const handleSetInActiveWindow = (window: "finder" | "neovim") => {
+    if (window === "finder") setActiveWindow({ ...activeWindow, finder: false });
+    else if (window === "neovim") setActiveWindow({ ...activeWindow, neovim: false });
+  }
 
 
   return (
-    <ActiveWindowContext.Provider value={{ windowFinder, windowNeoVim, handleSetActiveWindow, handleSetInactiveWindow, handleSetActiveWindowNeoVim, handleSetInactiveWindowNeoVim }}>
+    <ActiveWindowContext.Provider value={{ activeWindow, handleSetActiveWindow, handleSetInActiveWindow }}>
       {children}
     </ActiveWindowContext.Provider>
   )

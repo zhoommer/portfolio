@@ -11,8 +11,7 @@ const ResizableBox = ({ children, startX, startY }: ResizableProps) => {
   return (
     <>
       <Resizable
-        defaultSize={{ width: 800, height: 400 }
-        }
+        defaultSize={{ width: 800, height: 400 }}
         minWidth={400}
         minHeight={400}
         maxWidth={800}

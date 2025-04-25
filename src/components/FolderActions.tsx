@@ -9,11 +9,11 @@ interface FolderActionsProps {
 
 export default function FolderActions({ folder }: FolderActionsProps) {
   const { closeModal } = useModalContext();
-  const { handleSetInactiveWindow, handleSetInactiveWindowNeoVim } = useActiveWindowContext();
+  const { handleSetInActiveWindow } = useActiveWindowContext();
 
   return (
     <div className="flex gap-1">
-      <Link to="/" onClick={() => { closeModal(folder); handleSetInactiveWindow(); handleSetInactiveWindowNeoVim(); }}>
+      <Link to="/" onClick={() => { closeModal(folder); handleSetInActiveWindow(folder) }}>
         <IoIosCloseCircle color="red" size={15} />
       </Link>
       <button>
