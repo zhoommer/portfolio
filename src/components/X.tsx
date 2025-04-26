@@ -8,6 +8,11 @@ import { IoMdNotificationsOutline } from "react-icons/io";
 import { IoMailOutline, IoBookmarkOutline } from "react-icons/io5";
 import { GiFeather } from "react-icons/gi";
 import { CiSettings } from "react-icons/ci";
+import { BsFillPatchCheckFill, BsThreeDots } from "react-icons/bs";
+import { BiLike, BiMessage } from "react-icons/bi";
+import { RiArrowUpDownFill, RiShare2Line } from "react-icons/ri";
+import { MdBarChart } from "react-icons/md";
+import { xContents } from "../contents/xContents";
 
 export default function X() {
   const { isOpen } = useModalContext();
@@ -15,7 +20,7 @@ export default function X() {
     <>
       {
         isOpen.x &&
-        <ResizableBox startX={100} startY={100}>
+        <ResizableBox startX={0} startY={0} defaultWidth={1280} defaultHeight={200}>
           <div className="border rounded bg-zinc-900">
             <FolderActions folder="x" />
             <div className="@container bg-black rounded-lg">
@@ -42,7 +47,7 @@ export default function X() {
                   </div>
                 </div>
                 {/* main area */}
-                <div className="grow">
+                <div className="flex-1/2">
                   <div className="border-b border-zinc-700">
                     <div className="flex p-2">
                       <div className="flex-grow flex justify-center">
@@ -61,11 +66,61 @@ export default function X() {
                       </div>
                     </div>
                   </div>
-                  {/* main TODO:  */}
-                  <div>main</div>
+                  {/* main  */}
+                  <div className="overflow-y-scroll" style={{ maxHeight: "800px" }}>
+                    {
+                      xContents.map((content, index) => (
+                        <div key={index} className="border-b border-zinc-700 flex flex-col gap-3 p-5">
+                          <div className="flex gap-3 items-center text-zinc-300">
+                            <div>
+                              <img src={content.image} alt="Takuya" width={40} height={40} className="rounded-full" />
+                            </div>
+                            <div className="text-sm grow flex items-center gap-1">
+                              <p>{content.username}</p>
+                              <span>
+                                <BsFillPatchCheckFill className="text-blue-400" />
+                              </span>
+                            </div>
+                            <div>
+                              <BsThreeDots />
+                            </div>
+                          </div>
+                          <div className="px-10">
+                            <h3 className="text-zinc-300 text-sm">{content.title}</h3>
+                            <video controls width={"640"} height={"390"} className="rounded mt-2">
+                              <source src="https://x.com/inkdrop_app/status/1897917401028870331" />
+                            </video>
+                          </div>
+                          <div className="flex justify-between px-10 text-zinc-300">
+                            <div className="flex items-start gap-1">
+                              <BiMessage size={14} />
+                              <p className="content__p">{content.reply}</p>
+                            </div>
+                            <div className="flex items-start gap-1">
+                              <RiArrowUpDownFill size={14} />
+                              <p className="content__p">{content.repost}</p>
+                            </div>
+                            <div className="flex items-start gap-1">
+                              <BiLike size={14} />
+                              <p className="content__p">{content.like}</p>
+                            </div>
+                            <div className="flex items-start gap-1">
+                              <MdBarChart size={14} />
+                              <p className="content__p">{content.view}</p>
+                            </div>
+                            <div className="flex items-start gap-1">
+                              <IoBookmarkOutline size={14} />
+                            </div>
+                            <div className="flex items-start gap-1">
+                              <RiShare2Line size={14} />
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                  </div>
                 </div>
                 {/* right area */}
-                <div className="hidden @lg:block border-l border-zinc-700 text-zinc-300 p-2">
+                <div className="hidden @lg:block flex-1/6 border-l border-zinc-700 text-zinc-300 p-2">
                   <div className="flex gap-2">
                     <input type="search" placeholder="Search" className="grow text-xs border border-zinc-700 rounded px-2 focus:outline-0" />
                     <CiSettings size={20} />

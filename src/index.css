@@ -8,3 +8,7 @@ body {
   background-size: cover;
   height: 100dvh;
 }
+
+.content__p {
+  font-size: 9px;
+}
