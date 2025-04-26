@@ -5,6 +5,9 @@ import { useModalContext } from "../context/ModalProvider";
 
 export default function NeoVim() {
   const { isOpen } = useModalContext();
+
+
+
   return (
     <>
       {isOpen.neovim &&

@@ -4,7 +4,7 @@ import { useModalContext } from "../context/ModalProvider";
 import { useActiveWindowContext } from "../context/ActiveWindowProvider";
 
 interface FolderActionsProps {
-  folder: "finder" | "neovim";
+  folder: "finder" | "neovim" | "x";
 }
 
 export default function FolderActions({ folder }: FolderActionsProps) {

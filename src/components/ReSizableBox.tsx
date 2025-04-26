@@ -7,18 +7,16 @@ interface ResizableProps {
 }
 
 const ResizableBox = ({ children, startX, startY }: ResizableProps) => {
-
   return (
     <>
       <Resizable
         defaultSize={{ width: 800, height: 400 }}
-        minWidth={400}
+        minWidth={450}
         minHeight={400}
-        maxWidth={800}
+        maxWidth={1080}
         maxHeight={800}
         style={{ position: "absolute", top: `${startX}px`, left: `${startY}px` }}
-        bounds={"window"}
-        className="resizableComponent"
+        className="resizableWindow"
       >
         {children}
       </Resizable >

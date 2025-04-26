@@ -20,7 +20,7 @@ export default function AppBar() {
   const { openModal } = useModalContext();
   const { activeWindow, handleSetActiveWindow } = useActiveWindowContext();
 
-  const setBounceAnimation = (element: "finder" | "neovim") => {
+  const setBounceAnimation = (element: "finderIcon" | "neovimIcon" | "xIcon") => {
     document.getElementById(element)?.classList.add("animate-bounce");
     setTimeout(() => {
       document.getElementById(element)?.classList.remove("animate-bounce");
@@ -29,7 +29,7 @@ export default function AppBar() {
 
   return (
     <div className="w-max flex gap-3 bg-neutral-800 rounded-lg p-1">
-      <div className="flex flex-col items-center" id="finder" onClick={() => setBounceAnimation("finder")}>
+      <div className="flex flex-col items-center" id="finderIcon" onClick={() => setBounceAnimation("finderIcon")}>
         <AppButton src={finder} tooltip="Finder" href="/recents" onClick={() => { openModal("finder"); handleSetActiveWindow("finder") }} />
         {
           activeWindow.finder &&
@@ -39,7 +39,7 @@ export default function AppBar() {
       <AppButton src={launchpad} tooltip="Launchpad" />
       <AppButton src={safari} tooltip="Safari" />
       <AppButton src={firefox} tooltip="Firefox" />
-      <div className="flex flex-col items-center" id="neovim" onClick={() => setBounceAnimation("neovim")}>
+      <div className="flex flex-col items-center" id="neovimIcon" onClick={() => setBounceAnimation("neovimIcon")}>
         <AppButton src={neovim} tooltip="NeoVim" onClick={() => { openModal("neovim"); handleSetActiveWindow("neovim") }} />
         {
           activeWindow.neovim &&
@@ -50,7 +50,13 @@ export default function AppBar() {
       <AppButton src={postman} tooltip="Postman" />
       <AppButton src={postgresql} tooltip="pgAdmin 4" />
       <AppButton src={docker} tooltip="Docker Desktop" />
-      <AppButton src={twitter} tooltip="X" />
+      <div className="flex flex-col items-center" id="xIcon" onClick={() => setBounceAnimation("xIcon")}>
+        <AppButton src={twitter} tooltip="X" onClick={() => { openModal("x"); handleSetActiveWindow("x") }} />
+        {
+          activeWindow.x &&
+          <div className="w-1 h-1 rounded-full bg-white"></div>
+        }
+      </div>
       <AppButton src={spotify} tooltip="Spotify" />
       <AppButton src={photos} tooltip="Photos" />
       <AppButton src={calendar} tooltip="Calendar" />
