@@ -2,7 +2,8 @@
   "author": "Akif Fazıl GÜVEN",
   "name": "portfolio",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "This portfolio application contains small web clone projects. It also contains information about me.",
   "type": "module",
   "scripts": {
     "dev": "vite",

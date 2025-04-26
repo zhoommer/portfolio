@@ -2,31 +2,34 @@ import { createContext, useContext, useState } from "react";
 
 
 interface IActiveWindowContext {
-  activeWindow: { finder: boolean; neovim: boolean; x: boolean };
-  handleSetActiveWindow: (window: "finder" | "neovim" | "x") => void;
-  handleSetInActiveWindow: (window: "finder" | "neovim" | "x") => void;
+  activeWindow: { finder: boolean; neovim: boolean; x: boolean; youtube: boolean };
+  handleSetActiveWindow: (window: "finder" | "neovim" | "x" | "youtube") => void;
+  handleSetInActiveWindow: (window: "finder" | "neovim" | "x" | "youtube") => void;
 }
 
 
 const ActiveWindowContext = createContext<IActiveWindowContext | undefined>(undefined);
 
 export const ActiveWindowProvider = ({ children }: { children: React.ReactNode }) => {
-  const [activeWindow, setActiveWindow] = useState<{ finder: boolean; neovim: boolean; x: boolean }>({
+  const [activeWindow, setActiveWindow] = useState<{ finder: boolean; neovim: boolean; x: boolean; youtube: boolean }>({
     finder: false,
     neovim: false,
     x: false,
+    youtube: false,
   });
 
-  const handleSetActiveWindow = (window: "finder" | "neovim" | "x") => {
+  const handleSetActiveWindow = (window: "finder" | "neovim" | "x" | "youtube") => {
     if (window === "finder") setActiveWindow({ ...activeWindow, finder: true });
     else if (window === "neovim") setActiveWindow({ ...activeWindow, neovim: true });
     else if (window === "x") setActiveWindow({ ...activeWindow, x: true });
+    else if (window === "youtube") setActiveWindow({ ...activeWindow, youtube: true });
   }
 
-  const handleSetInActiveWindow = (window: "finder" | "neovim" | "x") => {
+  const handleSetInActiveWindow = (window: "finder" | "neovim" | "x" | "youtube") => {
     if (window === "finder") setActiveWindow({ ...activeWindow, finder: false });
     else if (window === "neovim") setActiveWindow({ ...activeWindow, neovim: false });
     else if (window === "x") setActiveWindow({ ...activeWindow, x: false });
+    else if (window === "youtube") setActiveWindow({ ...activeWindow, youtube: false });
   }
 
 
