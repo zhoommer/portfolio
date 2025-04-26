@@ -5,6 +5,7 @@ import Finder from "./components/Finder";
 import { ActiveWindowProvider } from "./context/ActiveWindowProvider";
 import NeoVim from "./pages/NeoVim";
 import X from "./components/X";
+import PdfViewer from "./components/PdfViewer";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
             <Finder />
             <NeoVim />
             <X />
+            <PdfViewer />
           </main>
           <footer className="flex justify-center items-center">
             <AppBar />

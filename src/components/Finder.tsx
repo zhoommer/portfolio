@@ -8,6 +8,7 @@ import Development from "../pages/Development";
 import FolderActions from "./FolderActions";
 import Recents from "../pages/Recents";
 import ResizableBox from "./ReSizableBox";
+import Documents from "../pages/Documents";
 
 
 
@@ -127,6 +128,7 @@ export default function Finder() {
                 <Routes>
                   <Route path="/development" element={<Development />} />
                   <Route path="/recents" element={<Recents />} />
+                  <Route path="/documents" element={<Documents />} />
                 </Routes>
               </div>
             </div>

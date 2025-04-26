@@ -11,6 +11,10 @@ import twitter from "../assets/icons/twitter/027ca902824024586d6a2c9106a21643_X_
 import spotify from "../assets/icons/spotify/5ed9551e4845d8d3a4e422cb9558c8ea_Spotify__iOS_18_Dark__32x32x32.png";
 import photos from "../assets/icons/photos/2bb4bbe5229f7ade8c8241edfd44f9ea_Photos_32x32x32.png";
 import calendar from "../assets/icons/calendar/2d2444e8aa4728fb184fb399f7fc3733_Calendar_32x32x32.png";
+import whatsapp from "../assets/icons/whatsapp/096da28269ad9e423dee2bc5e0934fa3_WhatsApp_32x32x32.png";
+import youtube from "../assets/icons/youtube/youtube_32x32x32.png";
+import appStore from "../assets/icons/appStore/88b5356dd158eba7ce8ae868d38bdec9_App_Store_32x32x32.png";
+import notes from "../assets/icons/notes/a7761e81eb0637b0c29977f1a2519d8c_Notes_32x32x32.png";
 import AppButton from "./button/AppButton";
 import { useModalContext } from "../context/ModalProvider";
 import { useActiveWindowContext } from "../context/ActiveWindowProvider";
@@ -57,9 +61,13 @@ export default function AppBar() {
           <div className="w-1 h-1 rounded-full bg-white"></div>
         }
       </div>
+      <AppButton src={youtube} tooltip="Youtube" />
       <AppButton src={spotify} tooltip="Spotify" />
+      <AppButton src={whatsapp} tooltip="Whatsapp" />
+      <AppButton src={notes} tooltip="Notes" />
       <AppButton src={photos} tooltip="Photos" />
       <AppButton src={calendar} tooltip="Calendar" />
+      <AppButton src={appStore} tooltip="App Store" />
     </div>
   )
 }
