@@ -87,9 +87,7 @@ export default function X() {
                           </div>
                           <div className="px-10">
                             <h3 className="text-zinc-300 text-sm">{content.title}</h3>
-                            <video controls width={"640"} height={"390"} className="rounded mt-2">
-                              <source src="https://x.com/inkdrop_app/status/1897917401028870331" />
-                            </video>
+                            <img src={content.src} width={"540"} height={"390"} className="rounded mt-2" />
                           </div>
                           <div className="flex justify-between px-10 text-zinc-300">
                             <div className="flex items-start gap-1">
