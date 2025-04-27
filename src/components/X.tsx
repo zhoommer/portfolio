@@ -89,7 +89,7 @@ export default function X() {
                             <h3 className="text-zinc-300 text-sm">{content.title}</h3>
                             <img src={content.src} width={"540"} height={"390"} className="rounded mt-2" />
                           </div>
-                          <div className="flex justify-between px-10 text-zinc-300">
+                          <div className="flex justify-around px-10 text-zinc-300">
                             <div className="flex items-start gap-1">
                               <BiMessage size={14} />
                               <p className="content__p">{content.reply}</p>

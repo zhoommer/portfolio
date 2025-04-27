@@ -63,6 +63,10 @@ export default function AppBar() {
       </div>
       <div className="flex flex-col items-center" id="youtubeIcon" onClick={() => setBounceAnimation("youtubeIcon")}>
         <AppButton src={youtube} tooltip="Youtube" onClick={() => { openModal("youtube"); handleSetActiveWindow("youtube") }} />
+        {
+          activeWindow.youtube &&
+          <div className="w-1 h-1 rounded-full bg-white"></div>
+        }
       </div>
       <AppButton src={spotify} tooltip="Spotify" />
       <AppButton src={whatsapp} tooltip="Whatsapp" />
