@@ -24,7 +24,7 @@ export default function AppBar() {
   const { openModal } = useModalContext();
   const { activeWindow, handleSetActiveWindow } = useActiveWindowContext();
 
-  const setBounceAnimation = (element: "finderIcon" | "neovimIcon" | "xIcon" | "youtubeIcon") => {
+  const setBounceAnimation = (element: "finderIcon" | "neovimIcon" | "xIcon" | "youtubeIcon" | "notesIcon") => {
     document.getElementById(element)?.classList.add("animate-bounce");
     setTimeout(() => {
       document.getElementById(element)?.classList.remove("animate-bounce");
@@ -70,7 +70,13 @@ export default function AppBar() {
       </div>
       <AppButton src={spotify} tooltip="Spotify" />
       <AppButton src={whatsapp} tooltip="Whatsapp" />
-      <AppButton src={notes} tooltip="Notes" />
+      <div className="flex flex-col items-center" id="notesIcon" onClick={() => setBounceAnimation("notesIcon")}>
+        <AppButton src={notes} tooltip="Notes" onClick={() => { openModal("notes"); handleSetActiveWindow("notes") }} />
+        {
+          activeWindow.notes &&
+          <div className="w-1 h-1 rounded-full bg-white"></div>
+        }
+      </div>
       <AppButton src={photos} tooltip="Photos" />
       <AppButton src={calendar} tooltip="Calendar" />
       <AppButton src={appStore} tooltip="App Store" />

@@ -7,6 +7,7 @@ import NeoVim from "./pages/NeoVim";
 import X from "./components/X";
 import PdfViewer from "./components/PdfViewer";
 import Youtube from "./components/Youtube";
+import Notes from "./components/Notes";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
             <X />
             <PdfViewer />
             <Youtube />
+            <Notes />
           </main>
           <footer className="flex justify-center items-center">
             <AppBar />

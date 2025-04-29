@@ -87,7 +87,7 @@ export default function X() {
                           </div>
                           <div className="px-10">
                             <h3 className="text-zinc-300 text-sm">{content.title}</h3>
-                            <img src={content.src} width={"540"} height={"390"} className="rounded mt-2" />
+                            <img src={content.src} className="rounded mt-2 object-cover" />
                           </div>
                           <div className="flex justify-around px-10 text-zinc-300">
                             <div className="flex items-start gap-1">

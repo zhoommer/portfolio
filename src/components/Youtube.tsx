@@ -47,7 +47,7 @@ export default function Youtube() {
                 <aside className="min-w-[80px] text-white flex flex-col items-center gap-5">
                   {
                     youtubeMenu.map((menu, index) => (
-                      <Link key={index} to={"#"} className="hover:bg-zinc-800 py-2 px-3 rounded">
+                      <Link key={index} to={"#"} className="hover:bg-zinc-800 py-2 px-3 rounded truncate">
                         <div className="flex flex-col justify-center items-center">
                           {menu.icon}
                           <p className="content__p">{menu.name}</p>
@@ -67,10 +67,10 @@ export default function Youtube() {
                       ))
                     }
                   </div>
-                  <div className="flex @sm:flex-wrap @sm:justify-center gap-3 mt-3 text-white pt-2">
+                  <div className="flex @sm:flex-wrap  gap-3 mt-3 text-white pt-2 h-[800px]">
                     {
                       youtubeContents.map((content, index) => (
-                        <div className="rounded-xl max-h-[420px]" key={index}>
+                        <div className="rounded-xl max-h-[420px] @sm:w-[550px]" key={index}>
                           {content.iframe}
                           <div className="flex items-center gap-2 mt-2">
                             <img src={devaslife} alt="Devaslife" className="rounded-full" width={40} height={40} />

@@ -3,7 +3,7 @@ import { useModalContext } from "../context/ModalProvider"
 import { RiSignalTowerFill, RiHistoryFill, RiAppStoreLine } from "react-icons/ri";
 import { IoCloud, IoShare } from "react-icons/io5";
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight, MdLabelImportant } from "react-icons/md";
-import { Link, Route, Routes, useLocation } from "react-router-dom";
+import { Link, Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import Development from "../pages/Development";
 import FolderActions from "./FolderActions";
 import Recents from "../pages/Recents";
@@ -16,6 +16,7 @@ export default function Finder() {
   const { isOpen } = useModalContext();
   const location = useLocation();
   const { pathname } = location;
+  const navigate = useNavigate();
 
 
   const activeWindow = (window: string): boolean => {
@@ -49,7 +50,7 @@ export default function Finder() {
       {
         isOpen.finder &&
         <ResizableBox startX={100} startY={100}>
-          <div className="border rounded w-full h-full flex bg-neutral-900">
+          <div className="w-full h-full rounded flex bg-neutral-900">
             <div className="w-[10rem] bg-neutral-800 text-white p-3 text-xs">
               <FolderActions folder="finder" />
               <div className="mt-4">
@@ -106,7 +107,7 @@ export default function Finder() {
                 <div>
                   <div className="flex items-center gap-2 text-normal">
                     <div className="p-1 hover:bg-zinc-800 transition-all rounded">
-                      <MdKeyboardArrowLeft className="text-zinc-400" size={25} />
+                      <MdKeyboardArrowLeft className="text-zinc-400" size={25} onClick={() => navigate(-1)} />
                     </div>
                     <MdKeyboardArrowRight className="text-zinc-400" size={25} />
                     <h3 className="text-zinc-200">{windowTitle()}</h3>
