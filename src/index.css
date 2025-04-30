@@ -12,3 +12,7 @@ body {
 .content__p {
   font-size: 9px;
 }
+
+textarea {
+  height: 100%;
+}
