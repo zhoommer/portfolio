@@ -63,9 +63,9 @@ export default function Notes() {
                 </div>
               </div>
 
-              <div className="grow bg-zinc-900">
-                <div className="flex h-full">
-                  <div className="flex-1 bg-zinc-800">
+              <div className="grow bg-zinc-900 rounded-tl-lg">
+                <div className="flex h-full rounded-tl-lg">
+                  <div className="flex-1 bg-zinc-800 rounded-tl-lg">
                     <div className="flex justify-between border-b-2 border-zinc-600">
                       <div className="flex-1 flex items-center gap-2 p-2">
                         <button className="bg-zinc-600 p-1 rounded-md">

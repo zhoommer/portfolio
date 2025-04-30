@@ -13,7 +13,7 @@ export default function AppButton({ src, tooltip, href, onClick }: AppButtonProp
   const [isHover, setIsHover] = useState<boolean>(false);
 
   return (
-    <div className="relative">
+    <div className="relative hover:scale-125 transition-all">
       <Link to={href ? href : ""} className="bg-transparent" onMouseEnter={() => setIsHover(true)} onMouseLeave={() => setIsHover(false)} onClick={onClick}>
         <img src={src} alt="Finder" />
       </Link>
